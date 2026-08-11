@@ -31,5 +31,23 @@ TOOLS = [
                 "required": ["length", "width"]
             }
         }
+    },
+
+    {
+        "type":"function",
+        "function":{
+            "name":"read_file",
+            "description":"Read the contents of a text file and return the information present in it.",
+            "parameters":{
+                "type":"object",
+                "properties":{
+                    "filename":{
+                        "type":"string",
+                        "description":"Name of the file to read"
+                    }
+                },
+                "required":["filename"]
+            }
+        }
     }
 ]
