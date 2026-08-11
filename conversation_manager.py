@@ -1,7 +1,7 @@
 from llm_client import client
 from tool_schema import TOOLS
 import json
-from tools import get_current_time, calculate_area
+from tools import get_current_time, calculate_area, read_file
 class ConversationManager:
     def __init__(self,system_prompt):
         self.system_prompt=system_prompt
@@ -48,6 +48,18 @@ class ConversationManager:
                     }
                 )
                 return result
+            if tool_name=="read_file":
+                arguments=json.loads(reply.tool_calls[0].function.arguments)
+                filename=arguments["filename"]
+                result=read_file(filename)
+                self.messages.append(
+                    {
+                        "role":"assistant",
+                        "content": result
+                    }
+                )
+                return result
+
         r=reply.content
         self.messages.append(
             {
