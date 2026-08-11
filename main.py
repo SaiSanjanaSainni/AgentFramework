@@ -1,6 +1,7 @@
 from conversation_manager import ConversationManager
 from tools import get_current_time
 from tools import calculate_area
+from tools import read_file
 chatbot = ConversationManager(
     """You are a helpful AI assistant.
 
